@@ -1,12 +1,23 @@
 <template>
-  <div>
-    <h1>Laravel 10 vue 3 setup test hello test again</h1>
-  </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Example Component</div>
+
+                    <div class="card-body">
+                        I'm an example component.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
-export default {};
+    export default {
+        mounted() {
+            console.log('Component mounted.')
+        }
+    }
 </script>
-
-<style lang="scss" scoped>
-</style>
