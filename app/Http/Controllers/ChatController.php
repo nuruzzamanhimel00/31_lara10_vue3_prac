@@ -9,7 +9,12 @@ use Illuminate\Support\Facades\Auth;
 
 class ChatController extends Controller
 {
-    public function send(){
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    public function send()
+    {
 
         $message = "hi";
         $user = User::find(Auth::id());
