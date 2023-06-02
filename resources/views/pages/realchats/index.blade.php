@@ -5,15 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">Real Chat</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
                     <div class="table-responsive">
                         <table class="table">
                             <thead class="thead-dark">
@@ -35,7 +29,7 @@
                                     Vue / Laravel
                                 </td>
                                 <td>
-                                    <a href="{{route('realtime.chat')}}" class="btn btn-primary">Visite</a>
+                                    <a href="{{route('realtime.chat.bitfums')}}" class="btn btn-primary">Visite</a>
                                 </td>
                               </tr>
 

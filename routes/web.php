@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Bitfums\ChatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/realtime-chat', [ChatController::class, 'index'])->name('realtime.chat');
+Route::get('/realtime-chat-bitfums', [ChatController::class, 'bitfumsIndex'])->name('realtime.chat.bitfums');
