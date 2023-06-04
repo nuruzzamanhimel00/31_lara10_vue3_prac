@@ -24,6 +24,7 @@ class ChatEvent implements ShouldBroadcast
     {
         $this->message = $message;
         $this->user = $user;
+        // dd($this->message, $this->user);
     }
 
     /**
@@ -34,8 +35,8 @@ class ChatEvent implements ShouldBroadcast
     public function broadcastOn(): array
     {
         return [
-            new Channel('chat'),
-            // new PrivateChannel('chat'),
+            // new Channel('chat'),
+            new PrivateChannel('chat'),
         ];
     }
 }

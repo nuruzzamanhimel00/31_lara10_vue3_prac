@@ -21,6 +21,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::as('realtime.')->group(function(){
+    Route::get('/realtime-chat', [ChatController::class, 'index'])->name('chat');
+    Route::get('/realtime-chat-bitfums', [ChatController::class, 'bitfumsIndex'])->name('chat.bitfums');
+    Route::get('/realtime-chat-bitfums/sendMessage', [ChatController::class, 'bitfumSendMessage'])->name('chat.bitfums.sendMessage');
+});
 
-Route::get('/realtime-chat', [ChatController::class, 'index'])->name('realtime.chat');
-Route::get('/realtime-chat-bitfums', [ChatController::class, 'bitfumsIndex'])->name('realtime.chat.bitfums');
