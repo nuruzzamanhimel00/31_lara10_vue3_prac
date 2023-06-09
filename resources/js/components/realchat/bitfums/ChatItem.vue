@@ -6,6 +6,7 @@
             aria-current="true"
         >
             <slot></slot>
+            <span class="time">{{ times }} </span>
         </li>
         <button
             @click.prevent="$emit('chatItemDelete', keyData)"
@@ -22,7 +23,7 @@
 <script>
 export default {
     name: "ChatItem",
-    props: ["color", "userIdentifierColor", "keyData", "username"],
+    props: ["color", "userIdentifierColor", "keyData", "username", "times"],
     data() {
         return {};
     },
@@ -42,4 +43,11 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.time {
+    font-size: 12px;
+    margin-left: 5px;
+    margin-top: 8px;
+    font-style: italic;
+}
+</style>

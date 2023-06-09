@@ -14,6 +14,7 @@
                 :user-identifier-color="`danger`"
                 :key-data="key"
                 :username="`${form.users[key]}`"
+                :times="`${form.times[key]}`"
                 @chatItemDelete="onChatItemDelete"
             >
                 {{ message }}
@@ -39,6 +40,7 @@ export default {
                 messages: [],
                 users: [],
                 colors: [],
+                times: [],
             },
             typing: "",
         };
@@ -62,6 +64,7 @@ export default {
                 this.form.messages.push(e.message);
                 self.form.colors.push("warning");
                 self.form.users.push(e.user.name);
+                self.form.times.push(this.getTimes());
             })
             .listenForWhisper("typing", (e) => {
                 if (e.name != "") {
@@ -84,6 +87,7 @@ export default {
                         self.form.messages.push(self.message);
                         self.form.users.push("You");
                         self.form.colors.push("success");
+                        self.form.times.push(this.getTimes());
                         self.message = "";
                         console.log(response);
                     })
@@ -96,6 +100,17 @@ export default {
             let self = this;
             self.form.messages.splice(index, 1);
             console.log("index", index);
+        },
+        getTimes() {
+            let currentdate = new Date();
+
+            return (
+                currentdate.getHours() +
+                ":" +
+                currentdate.getMinutes() +
+                ":" +
+                currentdate.getSeconds()
+            );
         },
     },
 };
