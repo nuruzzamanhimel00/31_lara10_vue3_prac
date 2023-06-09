@@ -3,7 +3,10 @@
         <li class="list-group-item active" aria-current="true">
             Personal Chat
         </li>
-        <ul class="list-group">
+        <span class="badge badge-primary" v-if="typing != ''">{{
+            typing
+        }}</span>
+        <ul class="list-group" style="min-height: 150px">
             <chat-item
                 v-for="(message, key) in form.messages"
                 :key="key"
@@ -37,19 +40,37 @@ export default {
                 users: [],
                 colors: [],
             },
+            typing: "",
         };
     },
     components: {
         ChatItem,
     },
+    watch: {
+        message() {
+            Echo.private(`chat`).whisper("typing", {
+                name: this.message,
+            });
+            // console.log("messag");
+        },
+    },
     mounted() {
-        Echo.private(`chat`).listen("ChatEvent", (e) => {
-            let self = this;
-            console.log(e, e.message);
-            this.form.messages.push(e.message);
-            self.form.colors.push("warning");
-            self.form.users.push(e.user.name);
-        });
+        Echo.private(`chat`)
+            .listen("ChatEvent", (e) => {
+                let self = this;
+                console.log(e, e.message);
+                this.form.messages.push(e.message);
+                self.form.colors.push("warning");
+                self.form.users.push(e.user.name);
+            })
+            .listenForWhisper("typing", (e) => {
+                if (e.name != "") {
+                    this.typing = "Typing...";
+                } else {
+                    this.typing = "";
+                }
+                console.log(e.name);
+            });
     },
     methods: {
         sendMessage() {
