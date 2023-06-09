@@ -1,9 +1,11 @@
 import "./bootstrap";
 import { createApp } from "vue";
 
+// for ziggi
 import { ZiggyVue } from "../../vendor/tightenco/ziggy/dist/vue.m";
 
 const app = createApp({});
+app.use(ZiggyVue);
 
 import ExampleComponent from "./components/ExampleComponent.vue";
 // app.component("example-component", ExampleComponent);
@@ -11,6 +13,10 @@ import ExampleComponent from "./components/ExampleComponent.vue";
 // app.component("real-chat", () =>
 //     import("./components/realchat/bitfums/RealChat.vue")
 // );
+
+//for v-toster
+import Toaster from "@meforma/vue-toaster";
+app.use(Toaster);
 
 Object.entries(import.meta.glob("./**/*.vue", { eager: true })).forEach(
     ([path, definition]) => {
@@ -23,7 +29,5 @@ Object.entries(import.meta.glob("./**/*.vue", { eager: true })).forEach(
         );
     }
 );
-
-app.use(ZiggyVue);
 
 app.mount("#app");

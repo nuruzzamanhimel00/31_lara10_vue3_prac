@@ -2,6 +2,9 @@
     <div>
         <li class="list-group-item active" aria-current="true">
             Personal Chat
+            <span class="badge badge-pill badge-danger">{{
+                numberOfOnlines
+            }}</span>
         </li>
         <span class="badge badge-primary" v-if="typing != ''">{{
             typing
@@ -43,6 +46,7 @@ export default {
                 times: [],
             },
             typing: "",
+            numberOfOnlines: 0,
         };
     },
     components: {
@@ -73,6 +77,26 @@ export default {
                     this.typing = "";
                 }
                 console.log(e.name);
+            });
+
+        Echo.join(`chat`)
+            .here((users) => {
+                this.numberOfOnlines = users.length;
+                console.log("here", users);
+            })
+            .joining((user) => {
+                this.numberOfOnlines += 1;
+                this.$toast.success(`${user.name} is Online..`);
+                // this.$toaster.success(`${user.name} is Online..`);
+                console.log("joining", user.name);
+            })
+            .leaving((user) => {
+                this.$toast.warning(`${user.name} is offLine..`);
+                this.numberOfOnlines -= 1;
+                console.log("leaving", user.name);
+            })
+            .error((error) => {
+                console.error("error", error);
             });
     },
     methods: {
