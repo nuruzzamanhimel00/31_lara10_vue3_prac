@@ -1,6 +1,8 @@
 import "./bootstrap";
 import { createApp } from "vue";
 
+import { ZiggyVue } from "../../vendor/tightenco/ziggy/dist/vue.m";
+
 const app = createApp({});
 
 import ExampleComponent from "./components/ExampleComponent.vue";
@@ -21,5 +23,7 @@ Object.entries(import.meta.glob("./**/*.vue", { eager: true })).forEach(
         );
     }
 );
+
+app.use(ZiggyVue);
 
 app.mount("#app");

@@ -15,12 +15,14 @@ class ChatController extends Controller
     }
 
     public function bitfumsIndex(){
+        // dd(auth()->id());
         return view('pages.realchats.bitfums.index');
     }
 
     public function bitfumSendMessage(Request $request){
-        $message = 'Hi';
+        // dd($request->all());
         $user = User::find( Auth::user()->id);
-        event(new ChatEvent($message, $user));
+
+        event(new ChatEvent($request->message, $user));
     }
 }

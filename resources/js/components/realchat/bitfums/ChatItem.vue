@@ -13,16 +13,16 @@
         >
             Delete
         </button>
-        <small class="badge float-right mb-1" :class="sendMessageUser"
-            >You</small
-        >
+        <small class="badge float-right mb-1" :class="sendMessageUser">{{
+            username
+        }}</small>
     </div>
 </template>
 
 <script>
 export default {
     name: "ChatItem",
-    props: ["color", "userIdentifierColor", "keyData"],
+    props: ["color", "userIdentifierColor", "keyData", "username"],
     data() {
         return {};
     },

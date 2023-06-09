@@ -24,6 +24,7 @@ class ChatEvent implements ShouldBroadcast
     {
         $this->message = $message;
         $this->user = $user;
+        $this->dontBroadcastToCurrentUser();
         // dd($this->message, $this->user);
     }
 
