@@ -29,7 +29,8 @@
                                 <th scope="row">1</th>
                                 <td>
                                     Title: Biftums: Real Time Chat With Laravel Broadcast, Pusher and Vuejs  <br>
-                                    url: https://www.youtube.com/watch?v=u6CwVxcyfD0&list=PLe30vg_FG4OQsCOAzymRY5GkQpFqc1U-D
+                                    url: https://www.youtube.com/watch?v=u6CwVxcyfD0&list=PLe30vg_FG4OQsCOAzymRY5GkQpFqc1U-D <br>
+                                    View: <a href="{{ asset('assets/fileOrPdf/bitfums realtime chat in lara vue push.docx') }}"> Download Pdf </a>
                                 </td>
                                 <td>
                                     Vue / Laravel

@@ -18,6 +18,9 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
+    <link href="{{ asset('plugins/sweetalert/sweetalert.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('plugins/toastr/toastr.min.css') }}" rel="stylesheet">
+
 </head>
 <body>
     @routes
@@ -84,5 +87,88 @@
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+
+<script src="{{ asset('plugins/toastr/toastr.min.js') }}"></script>
+<script src="{{ asset('plugins/sweetalert/sweetalert.min.js') }}"></script>
+
+<script>
+    toastr.options =
+    {
+        "closeButton": true,
+        "progressBar": true,
+        "timeOut": 2000
+    }
+
+    @if(Session::has('success'))
+        toastr.success("{{ session('success') }}");
+    @endif
+    @if(Session::has('error'))
+        toastr.error("{{ session('error') }}");
+    @endif
+    @if(Session::has('update'))
+        toastr.info("{{ session('update') }}");
+    @endif
+    @if(Session::has('delete'))
+    toastr.success("{{ session('delete') }}");
+    @endif
+    @if(Session::has('info'))
+        toastr.info("{{ session('info') }}");
+    @endif
+    @if(Session::has('warning'))
+        toastr.warning("{{ session('warning') }}");
+    @endif
+
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            toastr.error("{{ $error }}");
+        @endforeach
+    @endif
+
+    // Toaster notify
+    const notify = (type, msg) => {
+        if (type == 'success') {
+            toastr.success(msg);
+        } else {
+            toastr.warning(msg);
+        }
+    }
+
+    function showValidationError(err) {
+        let error_string = '<div class="error-sa-v text-left">';
+        for (const [key, value] of Object.entries(
+        err.response.data.errors
+        )) {
+            error_string = error_string + value[0] + "<br>";
+
+            if (value[1] != "undefined" && value[1] != undefined) {
+                error_string = error_string + value[1] + "<br>";
+            }
+        }
+        error_string = error_string + "<div>";
+
+        Swal.fire({
+            icon: "error",
+            html: error_string,
+        });
+    }
+
+    function showSomethingWrong() {
+        Swal.fire({
+            icon: "error",
+            html: "<span>Something is wrong!</span>" + "<br>",
+            showConfirmButton: true,
+        });
+    }
+
+    const uploadFileCustom = (selector, type = "image") => {
+        const file = $(`.${selector}`).filemanager(`${type}`);
+    }
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
 </body>
 </html>

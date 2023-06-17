@@ -32,6 +32,22 @@
                                     <a href="{{route('realtime.chat.bitfums')}}" class="btn btn-primary">Visite</a>
                                 </td>
                               </tr>
+                              <tr>
+                                <th scope="row">1</th>
+                                <td>
+                                    Title: Group chat learn from youtube  <br>
+                                    <br> Nd: I learn main concept fprm bitfum project and i get group chat and braod cast concept form this project
+                                    yotubr url: https://www.youtube.com/watch?v=o5Cfq0QNOyA&t=835s
+                                    <br>
+                                    git hubt: https://github.com/laravelteacher/VueGroupchat
+                                </td>
+                                <td>
+                                    Vue / Laravel
+                                </td>
+                                <td>
+                                    <a href="/chat-home" class="btn btn-primary">Visite</a>
+                                </td>
+                              </tr>
 
 
 

@@ -27,3 +27,18 @@ Route::as('realtime.')->group(function(){
     Route::post('/realtime-chat-bitfums/sendMessage', [ChatController::class, 'bitfumSendMessage'])->name('chat.bitfums.sendMessage');
 });
 
+
+Route::get('/chat-home', [App\Http\Controllers\HomeController::class, 'index_one'])->name('home');
+
+Route::get('/chats/{id}/', 'App\Http\Controllers\ChatApp\ChatController@index');
+Route::get('/messages/{id}/', 'App\Http\Controllers\ChatApp\ChatController@fetchAllMessages');
+Route::post('/messages/{id}/', 'App\Http\Controllers\ChatApp\ChatController@sendMessage');
+Route::post('/delete/{code}', 'App\Http\Controllers\ChatApp\ChatController@destroy');
+Route::DELETE('/delete/{id}/', 'App\Http\Controllers\ChatApp\ChatController@delete');
+
+Route::get('/group/create', 'App\Http\Controllers\ChatApp\GroupController@create_form');
+Route::post('/group/create', 'App\Http\Controllers\ChatApp\GroupController@create');
+Route::get('/group/join', 'App\Http\Controllers\ChatApp\GroupController@join_form');
+Route::post('/group/join', 'App\Http\Controllers\ChatApp\GroupController@join');
+
+Route::get('/subscribe', 'App\Http\Controllers\ChatApp\ChatController@subscribe');

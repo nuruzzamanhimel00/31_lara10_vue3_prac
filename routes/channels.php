@@ -21,3 +21,12 @@ Broadcast::channel('chat', function($user){
     // return $user->id == 1;
     return ['name' => $user->name];
 });
+
+
+Broadcast::channel('chat{id}', function ($user) {
+    return $user;
+});
+Broadcast::channel('send{id}', function ($user) {
+    return $user;
+});
+
