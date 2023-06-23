@@ -8,7 +8,7 @@
               <a class="nav-link active" href="{{route('mychat.make.group')}}">Make Group</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">List Group</a>
+              <a class="nav-link" href="{{route('mychat.make.group.list')}}">List Group</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">All Friends</a>

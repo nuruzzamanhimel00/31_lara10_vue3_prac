@@ -21,6 +21,8 @@
     <link href="{{ asset('plugins/sweetalert/sweetalert.min.css') }}" rel="stylesheet">
     <link href="{{ asset('plugins/toastr/toastr.min.css') }}" rel="stylesheet">
 
+    @stack('styles')
+
 </head>
 <body>
     @routes
@@ -90,7 +92,7 @@
 
 <script src="{{ asset('plugins/toastr/toastr.min.js') }}"></script>
 <script src="{{ asset('plugins/sweetalert/sweetalert.min.js') }}"></script>
-
+@stack('script')
 <script>
     toastr.options =
     {

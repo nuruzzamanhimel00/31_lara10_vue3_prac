@@ -57,7 +57,8 @@ Route::prefix('mychat')->as('mychat.')->group(function(){
     Route::controller(MyGroupController::class)->group(function () {
         Route::get('/make-group','makeGroup')->name('make.group');
         Route::post('/make-group','makeGroupSubmit')->name('make.group.submit');
-
+        Route::get('/group-list','makeGroupList')->name('make.group.list');
+        Route::post('/group-join','makeGroupJoin')->name('make.group.join');
     });
 
 });
