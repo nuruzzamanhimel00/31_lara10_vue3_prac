@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Bitfums\ChatController;
+use App\Http\Controllers\MyChat\MyChatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +28,7 @@ Route::as('realtime.')->group(function(){
     Route::post('/realtime-chat-bitfums/sendMessage', [ChatController::class, 'bitfumSendMessage'])->name('chat.bitfums.sendMessage');
 });
 
-
+// ###################### Group chat route from youtube ################
 Route::get('/chat-home', [App\Http\Controllers\HomeController::class, 'index_one'])->name('home');
 
 Route::get('/chats/{id}/', 'App\Http\Controllers\ChatApp\ChatController@index');
@@ -42,3 +43,14 @@ Route::get('/group/join', 'App\Http\Controllers\ChatApp\GroupController@join_for
 Route::post('/group/join', 'App\Http\Controllers\ChatApp\GroupController@join');
 
 Route::get('/subscribe', 'App\Http\Controllers\ChatApp\ChatController@subscribe');
+// ###################### Group chat route from youtube ################
+
+// ##### Chat Application practice myself ####
+
+Route::prefix('mychat')->as('mychat.')->group(function(){
+    Route::get('/dashboard', [MyChatController::class, 'dashboard'])->name('dashboard');
+
+});
+
+
+

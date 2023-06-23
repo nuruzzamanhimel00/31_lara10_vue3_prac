@@ -54,6 +54,11 @@ class User extends Authenticatable
         ->orderBy('updated_at', 'desc');
     }
 
+    //mychat realtion
+    public function mychat_group(){
+        return $this->belongsToMany(Group::class, 'group_users','user_id','group_id');
+    }
+
     // public function participants()
     // {
     //     return $this->belongsToMany('App\Models\User', 'group_participants', 'group_id', 'user_id');

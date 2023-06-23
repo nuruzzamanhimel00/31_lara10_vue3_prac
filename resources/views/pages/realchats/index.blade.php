@@ -48,6 +48,21 @@
                                     <a href="/chat-home" class="btn btn-primary">Visite</a>
                                 </td>
                               </tr>
+                              <tr>
+                                <th scope="row">1</th>
+                                <td>
+                                    Title: My OWn make chat Applicaltion <br>
+                                    <br>
+                                    <br>
+                                    git hubt: https://github.com/laravelteacher/VueGroupchat
+                                </td>
+                                <td>
+                                    Vue / Laravel
+                                </td>
+                                <td>
+                                    <a href="{{route('mychat.dashboard')}}" class="btn btn-primary">Visite</a>
+                                </td>
+                              </tr>
 
 
 
