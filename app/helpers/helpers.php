@@ -1,12 +1,12 @@
 <?php
-
+// namespace App\Helpers;
 use Illuminate\Support\Facades\Session;
 
 if (!function_exists('random_digits')) {
 
     function random_digits()
     {
-        return date('YmdHis');
+        return date('YmdHis').rand(1,1000);
     }
 }
 

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Bitfums\ChatController;
 use App\Http\Controllers\MyChat\MyChatController;
+use App\Http\Controllers\MyChat\MyGroupController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,7 +49,16 @@ Route::get('/subscribe', 'App\Http\Controllers\ChatApp\ChatController@subscribe'
 // ##### Chat Application practice myself ####
 
 Route::prefix('mychat')->as('mychat.')->group(function(){
-    Route::get('/dashboard', [MyChatController::class, 'dashboard'])->name('dashboard');
+    Route::controller(MyChatController::class)->group(function () {
+
+        Route::get('/dashboard','dashboard')->name('dashboard');
+
+    });
+    Route::controller(MyGroupController::class)->group(function () {
+        Route::get('/make-group','makeGroup')->name('make.group');
+        Route::post('/make-group','makeGroupSubmit')->name('make.group.submit');
+
+    });
 
 });
 

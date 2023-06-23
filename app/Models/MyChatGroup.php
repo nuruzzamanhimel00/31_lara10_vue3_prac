@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class MyChatGroup extends Model
 {
@@ -12,10 +13,12 @@ class MyChatGroup extends Model
     protected $fillable = [
         'name',
         'user_id',
-        'code'
+        'code',
+        'status',
     ];
 
-    public function mychat_user(){
-        $this->belongsToMany(User::class,'group_users','group_id','user_id');
+    public function mychatUsers(){
+        return $this->belongsToMany(User::class,'group_user','group_id','user_id')
+        ->withTimestamps();
     }
 }

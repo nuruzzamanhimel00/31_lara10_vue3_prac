@@ -3,10 +3,11 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Group;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -55,8 +56,9 @@ class User extends Authenticatable
     }
 
     //mychat realtion
-    public function mychat_group(){
-        return $this->belongsToMany(Group::class, 'group_users','user_id','group_id');
+    public function mychatGroup(){
+        return $this->belongsToMany(Group::class, 'group_user','user_id','group_id')
+        ->withTimestamps();
     }
 
     // public function participants()

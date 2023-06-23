@@ -2,10 +2,10 @@
     <div class="row">
         <ul class="nav">
             <li class="nav-item">
-              <a class="nav-link active" href="#">Dashboard</a>
+              <a class="nav-link active" href="{{ route('mychat.dashboard') }}">Dashboard</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="#">Make Group</a>
+              <a class="nav-link active" href="{{route('mychat.make.group')}}">Make Group</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">List Group</a>

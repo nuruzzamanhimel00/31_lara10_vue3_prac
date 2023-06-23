@@ -16,9 +16,8 @@ return new class extends Migration
             $table->string('name');
 
             $table->foreignId('user_id');
-
-
             $table->string('code')->unique();
+            $table->string('status')->default('active')->comment('active|inactive');
             $table->timestamps();
         });
     }
