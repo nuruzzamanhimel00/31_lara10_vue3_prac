@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\MyChat;
 
+use App\Models\User;
 use App\Models\MyChatGroup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -73,4 +74,22 @@ class MyGroupController extends Controller
 
         // dd($request->all());
     }
+
+    public function groupMemberList($gId){
+        $group = MyChatGroup::query()->with(['mychatUsers'])->find($gId);
+        return view('mychat.group.group-members',compact('group'));
+    }
+
+    public function groupMemberDelete($gId,  $uId){
+        $group = MyChatGroup::query()->with(['mychatUsers'])->find($gId);
+        $user = User::find($uId);
+        if($user->id === auth()->user()->id){
+            something_wrong_flash('Ownder Cannot Delete');
+            return redirect()->back();
+        }
+        $group->mychatUsers()->detach($user->id);
+        record_created_flash('Member deleted successfully');
+        return redirect()->back();
+    }
+
 }

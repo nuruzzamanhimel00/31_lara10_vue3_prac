@@ -40,9 +40,9 @@
                                                         <td>{{ $group->user->name }}</td>
                                                         <td>
                                                             @if($group->user->id === auth()->user()->id)
-                                                            <a href="" class="btn btn-success ">Members({{$group->mychatUsers->count()}})</a>
+                                                            <a href="{{route('mychat.group.member.list',$group->id)}}" class="btn btn-success ">Members VIew({{$group->mychatUsers()->count()}})</a>
                                                             @else
-                                                            <a href="" class="btn btn-light ">Members({{$group->mychatUsers->count()}})</a>
+                                                            <a href="#" class="btn btn-light ">Members VIew({{$group->mychatUsers->count()}})</a>
                                                             @endif
                                                             {{-- {{dd($group->mychatUsers()->pluck('user_id')->toArray())}} --}}
                                                             @if(!in_array(auth()->user()->id,$group->mychatUsers()->pluck('user_id')->toArray()))
