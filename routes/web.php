@@ -62,6 +62,9 @@ Route::prefix('mychat')->as('mychat.')->group(function(){
         Route::get('/group-member-list/{gId}','groupMemberList')->name('group.member.list');
         Route::get('/group/{gId}/member/{uId}/delete','groupMemberDelete')->name('group.member.delete');
         Route::get('/group-chat/{gId}','groupChat')->name('group.groupChat');
+        //get all messages
+        Route::get('/group/{gId}/messages','groupAllMessages')->name('group.Messages');
+        Route::post('/group/{gId}/sendMessage','groupSendMessage')->name('group.sendMessage');
     });
 
 });

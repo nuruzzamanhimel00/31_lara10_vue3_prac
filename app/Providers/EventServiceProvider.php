@@ -5,9 +5,11 @@ namespace App\Providers;
 use App\Events\ChatEvent;
 use App\Events\UserChatEvent;
 use App\Listeners\ChatListener;
+use App\Events\SendMessageEvent;
 use App\Events\UserMessageEvent;
 use App\Listeners\UserChatListaner;
 use Illuminate\Support\Facades\Event;
+use App\Listeners\SendMessageListener;
 use App\Listeners\UserMessageListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -32,6 +34,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         UserMessageEvent::class =>[
             UserMessageListener::class
+        ],
+        SendMessageEvent::class =>[
+            SendMessageListener::class
         ],
     ];
 

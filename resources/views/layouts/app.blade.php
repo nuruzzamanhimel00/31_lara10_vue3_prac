@@ -21,7 +21,7 @@
     <link href="{{ asset('plugins/sweetalert/sweetalert.min.css') }}" rel="stylesheet">
     <link href="{{ asset('plugins/toastr/toastr.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
-    @stack('styles')
+    @stack('style')
 
 </head>
 <body>

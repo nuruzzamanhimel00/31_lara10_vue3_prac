@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\MyChat;
 
 use App\Models\User;
+use App\Models\MyChat;
 use App\Models\MyChatGroup;
 use Illuminate\Http\Request;
+use App\Events\SendMessageEvent;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
@@ -100,6 +102,27 @@ class MyGroupController extends Controller
     public function groupChat($gId){
         $group= MyChatGroup::find($gId);
         return view('mychat.group.group-chats',compact('group'));
+    }
+
+    public function groupAllMessages($gId){
+        $chats = MyChat::where('group_id', $gId)->latest()->get();
+        return response()->json($chats);
+    }
+
+    public function groupSendMessage(Request $request, $gId){
+        // dd($request->all());
+        $this->validate($request, [
+            'message' => 'required',
+        ]);
+        $chat = MyChat::create([
+            'message' => $request->message,
+            'group_id' => $gId,
+            'user_id' => $request->user_id,
+        ]);
+        $chat = $chat->load('user','group');
+        broadcast(new SendMessageEvent($chat))->toOthers();
+        return response()->json($chat);
+        // dd($gId, $request->all());
     }
 
 }

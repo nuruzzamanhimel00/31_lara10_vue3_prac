@@ -30,3 +30,8 @@ Broadcast::channel('send{id}', function ($user) {
     return $user;
 });
 
+//mychat
+Broadcast::channel('sendsinglemessage{id}', function($user){
+    // return $user->id == 1;
+    return $user;
+});
