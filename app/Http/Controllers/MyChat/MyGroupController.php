@@ -10,6 +10,11 @@ use App\Http\Controllers\Controller;
 
 class MyGroupController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('myChatGroupOwnder')->only(['groupMemberList','groupMemberDelete']);
+    }
+
     public function makeGroup(){
        return view('mychat.group.make-group');
     }
@@ -90,6 +95,11 @@ class MyGroupController extends Controller
         $group->mychatUsers()->detach($user->id);
         record_created_flash('Member deleted successfully');
         return redirect()->back();
+    }
+
+    public function groupChat($gId){
+        $group= MyChatGroup::find($gId);
+        return view('mychat.group.group-chats',compact('group'));
     }
 
 }

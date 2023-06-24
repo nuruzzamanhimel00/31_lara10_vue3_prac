@@ -65,5 +65,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'member' => \Illuminate\Auth\Middleware\GroupMember::class,
         'owner' => \Illuminate\Auth\Middleware\GroupOwner::class,
+        'myChatGroupOwnder' => \App\Http\Middleware\MyChatGroupOwnder::class,
     ];
 }

@@ -20,7 +20,7 @@
 
     <link href="{{ asset('plugins/sweetalert/sweetalert.min.css') }}" rel="stylesheet">
     <link href="{{ asset('plugins/toastr/toastr.min.css') }}" rel="stylesheet">
-
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     @stack('styles')
 
 </head>
@@ -92,6 +92,7 @@
 
 <script src="{{ asset('plugins/toastr/toastr.min.js') }}"></script>
 <script src="{{ asset('plugins/sweetalert/sweetalert.min.js') }}"></script>
+<script src="{{asset('js/custom.js')}}"></script>
 @stack('script')
 <script>
     toastr.options =

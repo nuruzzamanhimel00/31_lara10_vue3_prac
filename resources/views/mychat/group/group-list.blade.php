@@ -81,7 +81,7 @@
                                                                 </div>
                                                             </div>
                                                             @else
-                                                            <a href="" class="btn btn-primary">Chat Group</a>
+                                                            <a href="{{ route('mychat.group.groupChat',$group->id)}}" class="btn btn-primary">Chat Group</a>
                                                             @endif
 
                                                         </td>
