@@ -196,6 +196,7 @@
         background-color: #82ccdd;
         padding: 10px;
         position: relative;
+        min-width: 20%;
     }
     .msg_cotainer_send {
         margin-top: auto;

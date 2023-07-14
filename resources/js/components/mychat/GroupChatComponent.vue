@@ -108,34 +108,10 @@
             </div>
             <div class="col-md-8 chat">
                 <div class="card">
-                    <div class="card-body msg_card_body">
-                        <div class="d-flex justify-content-start mb-4">
-                            <div class="img_cont_msg">
-                                <img
-                                    src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
-                                    class="rounded-circle user_img_msg"
-                                />
-                            </div>
-                            <div class="msg_cotainer">
-                                Hi, how are you samim?
-                                <span class="msg_time">8:40 AM, Today</span>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-end mb-4">
-                            <div class="msg_cotainer_send">
-                                Hi Khalid i am good tnx how about you?
-                                <span class="msg_time_send"
-                                    >8:55 AM, Today</span
-                                >
-                            </div>
-                            <div class="img_cont_msg">
-                                <img
-                                    src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
-                                    class="rounded-circle user_img_msg"
-                                />
-                            </div>
-                        </div>
-                    </div>
+                    <group-chat-messages
+                        :messages="messages"
+                        :auth-user="authUser"
+                    />
                     <div class="card-footer">
                         <div class="input-group">
                             <div class="input-group-append">
@@ -163,6 +139,7 @@
 </template>
 
 <script>
+import GroupChatMessages from "./GroupChatMessages.vue";
 export default {
     name: "GroupChatComponent",
     props: ["authUser"],
@@ -170,9 +147,13 @@ export default {
     data() {
         return {
             messages: [],
+            // message_types: [],
             groupId: "",
             message: "",
         };
+    },
+    components: {
+        GroupChatMessages,
     },
     created() {
         const url = window.location.href;
@@ -181,10 +162,11 @@ export default {
         console.log(groupId);
         this.fetchMessages();
 
-        Echo.private(`sendsinglemessage${groupId}`).listen(
+        Echo.private(`sendgroupmessage${groupId}`).listen(
             "SendMessageEvent",
             (e) => {
                 let self = this;
+                self.messages.push(e.chat);
                 console.log("litcher", e);
                 // this.form.messages.push(e.message);
                 // self.form.colors.push("warning");
@@ -201,12 +183,9 @@ export default {
                     user_id: this.authUser.id,
                     message: this.message,
                 })
-                .then(function (response) {
-                    let data = {
-                        time: self.getTimes(),
-                        message: response.message,
-                        type: "send",
-                    };
+                .then((response) => {
+                    self.message = "";
+                    self.messages.push(response.data);
                     console.log(response);
                 })
                 .catch(function (error) {
@@ -217,9 +196,12 @@ export default {
                 });
         },
         async fetchMessages() {
+            let self = this;
             await axios
                 .get("/mychat/group/" + this.groupId + "/messages")
                 .then(function (response) {
+                    self.messages = [...response.data];
+                    // self.messageTypeSet();
                     console.log("fetchMessages", response);
                 })
                 .catch(function (error) {
@@ -229,6 +211,19 @@ export default {
                     // always executed
                 });
         },
+        // messageTypeSet() {
+        //     let self = this;
+        //     if (self.messages.length > 0) {
+        //         self.message_types = [];
+        //         self.messages.map((message) => {
+        //             if (message.user_id === self.authUser.id) {
+        //                 self.message_types.push("send");
+        //             } else {
+        //                 self.message_types.push("received");
+        //             }
+        //         });
+        //     }
+        // },
         getTimes() {
             let currentdate = new Date();
 

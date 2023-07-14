@@ -39,7 +39,7 @@
                                                         <td>{{ $group->code }}</td>
                                                         <td>{{ $group->user->name }}</td>
                                                         <td>
-                                                            @if($group->user->id === auth()->user()->id)
+                                                            @if($group->user_id === auth()->user()->id)
                                                             <a href="{{route('mychat.group.member.list',$group->id)}}" class="btn btn-success ">Members VIew({{$group->mychatUsers()->count()}})</a>
                                                             @else
                                                             <a href="#" class="btn btn-light ">Members VIew({{$group->mychatUsers->count()}})</a>

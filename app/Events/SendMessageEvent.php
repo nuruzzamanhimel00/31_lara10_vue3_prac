@@ -33,7 +33,7 @@ class SendMessageEvent implements ShouldBroadcast
     {
         $chat = $this->chat;
         return [
-            new PrivateChannel('sendsinglemessage'.$chat->group_id),
+            new PrivateChannel('sendgroupmessage'.$chat->group_id),
 
         ];
     }
