@@ -39,6 +39,19 @@
                                     <a href="{{route('realtime.chat')}}" class="btn btn-primary">Visite</a>
                                 </td>
                               </tr>
+                              <tr>
+                                <th scope="row">1</th>
+                                <td>
+                                    Title: FULL Calender LIST  <br>
+
+                                </td>
+                                <td>
+                                    Vue / Laravel
+                                </td>
+                                <td>
+                                    <a href="{{route('fullcalender.list')}}" class="btn btn-primary">Visite</a>
+                                </td>
+                              </tr>
 
 
 

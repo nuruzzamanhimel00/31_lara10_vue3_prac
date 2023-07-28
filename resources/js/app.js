@@ -19,8 +19,8 @@ import Toaster from "@meforma/vue-toaster";
 app.use(Toaster);
 
 //vue socroll
-import VueChatScroll from "vue-chat-scroll";
-app.use(VueChatScroll);
+// import VueChatScroll from "vue-chat-scroll";
+// app.use(VueChatScroll);
 
 Object.entries(import.meta.glob("./**/*.vue", { eager: true })).forEach(
     ([path, definition]) => {
