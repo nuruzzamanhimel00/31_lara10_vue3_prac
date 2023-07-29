@@ -81,6 +81,7 @@
 import FullCalendar from "@fullcalendar/vue3";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
+import timeGridPlugin from "@fullcalendar/timegrid";
 
 export default {
     name: "CalenderComponent",
@@ -92,12 +93,27 @@ export default {
                 end_date: "",
             },
             calendarOptions: {
-                plugins: [dayGridPlugin, interactionPlugin],
+                plugins: [dayGridPlugin, interactionPlugin, timeGridPlugin],
+                headerToolbar: {
+                    left: "prev,next today",
+                    center: "title",
+                    right: "dayGridMonth,timeGridWeek,timeGridDay",
+                },
                 initialView: "dayGridMonth",
                 events: [],
+                editable: true,
+                selectable: true,
+                selectMirror: true,
+                dayMaxEvents: true,
+                weekends: true,
+                select: this.handleDateSelect,
                 dateClick: this.handleDateClick,
                 eventClick: this.showEvent,
-                selectable: true,
+
+                eventDrop: this.handleUpdateData,
+                eventResize: this.handleUpdateData,
+
+                droppable: true, // will let it receive events!
             },
             addingMode: true,
             indexToUpdate: "",
@@ -110,6 +126,11 @@ export default {
         this.getEvents();
     },
     methods: {
+        handleUpdateData(event) {
+            // console.log("handleEventDrop");
+            console.log("handleUpdateData", event);
+        },
+
         async addNewEvent() {
             await axios
                 .post("/api/full-calendar", {
@@ -166,8 +187,23 @@ export default {
                 end_date: end,
             };
         },
+        handleDateSelect(arg) {
+            console.log("handleDateSelect", arg);
+        },
         handleDateClick: function (arg) {
-            console.log(arg, arg.dateStr);
+            let self = this;
+            let title = prompt("Please enter a new title for your event");
+            console.log(arg, arg.dateStr, title);
+
+            if (title) {
+                self.newEvent.event_name = title;
+                self.newEvent.start_date = arg.dateStr;
+                self.newEvent.end_date = arg.dateStr;
+
+                let calendarApi = arg.view.calendar;
+                calendarApi.unselect(); // clear date selection
+                self.addNewEvent();
+            }
         },
 
         getEvents() {
