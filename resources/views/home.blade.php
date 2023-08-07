@@ -52,6 +52,19 @@
                                     <a href="{{route('fullcalender.list')}}" class="btn btn-primary">Visite</a>
                                 </td>
                               </tr>
+                              <tr>
+                                <th scope="row">1</th>
+                                <td>
+                                    Title: Dropzone.js  <br>
+
+                                </td>
+                                <td>
+                                    Vue / Laravel
+                                </td>
+                                <td>
+                                    <a href="{{route('dropzone.list')}}" class="btn btn-primary">Visite</a>
+                                </td>
+                              </tr>
 
 
 

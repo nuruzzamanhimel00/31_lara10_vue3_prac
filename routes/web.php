@@ -3,7 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Bitfums\ChatController;
 use App\Http\Controllers\CalenderController;
+use App\Http\Controllers\DropzoneController;
 use App\Http\Controllers\FullCalender\FullCalenderController;
+use App\Http\Controllers\ImageUploadController;
+// use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\MyChat\MyChatController;
 use App\Http\Controllers\MyChat\MyGroupController;
 
@@ -73,6 +76,25 @@ Route::prefix('mychat')->as('mychat.')->group(function(){
 
 });
 
+//dropzone
+Route::get('/dropzone-list', [DropzoneController::class, 'list'])->name('dropzone.list');
+Route::get('/dropzone', [DropzoneController::class, 'index'])->name('dropzone.index');
+
+// Route::resource('gallery', GalleryController::class);
+Route::get('image/upload', [ImageUploadController::class, 'fileCreate']);
+Route::post('image/upload/store', [ImageUploadController::class, 'fileStore']);
+Route::post('image/delete', [ImageUploadController::class, 'fileDestroy']);
+// Route::post('image/delete', [GalleryController::class, 'destroy']);
+
+// Route::get('image/upload','ImageUploadController@fileCreate');
+// Route::post('image/upload/store','ImageUploadController@fileStore');
+// Route::post('image/delete','ImageUploadController@fileDestroy');
+
+// Route::resource('gallery','GalleryController');
+// Route::get('getimages','GalleryController@getImages');
+// Route::post('image/delete','GalleryController@destroy');
+
+//fullCalender
 Route::get('/full-calender-list', [CalenderController::class, 'list'])->name('fullcalender.list');
 Route::get('/full-calender-index', [CalenderController::class, 'fullCalenderIndex'])->name('fullcalender.index');
 //full calender learn from youtube
