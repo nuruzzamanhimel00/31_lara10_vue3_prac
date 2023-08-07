@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Bitfums\ChatController;
 use App\Http\Controllers\CalenderController;
+use App\Http\Controllers\FullCalender\FullCalenderController;
 use App\Http\Controllers\MyChat\MyChatController;
 use App\Http\Controllers\MyChat\MyGroupController;
 
@@ -74,3 +75,5 @@ Route::prefix('mychat')->as('mychat.')->group(function(){
 
 Route::get('/full-calender-list', [CalenderController::class, 'list'])->name('fullcalender.list');
 Route::get('/full-calender-index', [CalenderController::class, 'fullCalenderIndex'])->name('fullcalender.index');
+//full calender learn from youtube
+Route::get('/full-calender', [FullCalenderController::class, 'index'])->name('full.calender.index');

@@ -28,6 +28,7 @@
                                     <th scope="row">1</th>
                                     <td>
                                         Title: FULL Calender LIST  <br>
+                                        <b>Youtube:</b> https://www.youtube.com/watch?v=x_WMkIKztRQ <br>
 
                                     </td>
                                     <td>
@@ -35,6 +36,20 @@
                                     </td>
                                     <td>
                                         <a href="{{route('fullcalender.index')}}" class="btn btn-primary">Visite</a>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">1</th>
+                                    <td>
+                                        Title: FULL Calender LIST  <br>
+                                        <b>Youtube:</b> https://www.youtube.com/watch?v=x_WMkIKztRQ <br>
+
+                                    </td>
+                                    <td>
+                                        Vue / Laravel
+                                    </td>
+                                    <td>
+                                        <a href="{{route('full.calender.index')}}" class="btn btn-primary">Visite</a>
                                     </td>
                                   </tr>
 
