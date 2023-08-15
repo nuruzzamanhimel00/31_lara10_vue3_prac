@@ -28,7 +28,11 @@
                                     <th scope="row">1</th>
                                     <td>
                                         Title: dropzone  <br>
-                                        <b>Youtube:</b> https://www.youtube.com/watch?v=x_WMkIKztRQ <br>
+                                        <b>url:</b> https://www.codesolutionstuff.com/laravel-9-dropzone-image-upload-example-step-by-step?expand_article=1
+                                        <a href="{{asset('assets/fileOrPdf/dropZone/dropZone image upload.pdf')}}">Download</a>
+                                        <br>
+                                        url weblessong (vvi): https://www.webslesson.info/2020/04/drag-and-drop-multiple-file-upload-in-laravel-7-using-dropzonejs.html
+                                        <a href="{{asset('assets/fileOrPdf/dropZone/weblesson dropzone click upload.pdf')}}">Download</a>
 
                                     </td>
                                     <td>
