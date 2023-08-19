@@ -21,11 +21,14 @@ use App\Http\Controllers\MyChat\MyGroupController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::redirect('/','/login');
 
 Auth::routes();
+
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::as('realtime.')->group(function(){
@@ -99,3 +102,8 @@ Route::get('/full-calender-list', [CalenderController::class, 'list'])->name('fu
 Route::get('/full-calender-index', [CalenderController::class, 'fullCalenderIndex'])->name('fullcalender.index');
 //full calender learn from youtube
 Route::get('/full-calender', [FullCalenderController::class, 'index'])->name('full.calender.index');
+//full calender with laravel
+Route::get('/full-calender-booking', [FullCalenderController::class, 'laravel'])->name('full.calender.laravel');
+Route::post('/full-calender-booking', [FullCalenderController::class, 'bookingStore'])->name('full.calender.booking.store');
+Route::put('/full-calender-booking/{id}', [FullCalenderController::class, 'bookingUpdate'])->name('full.calender.booking.update');
+Route::delete('/full-calender-booking/{id}', [FullCalenderController::class, 'bookingDelete'])->name('full.calender.booking.delete');

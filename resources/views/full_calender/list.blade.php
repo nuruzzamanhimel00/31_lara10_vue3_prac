@@ -27,7 +27,7 @@
                                   <tr>
                                     <th scope="row">1</th>
                                     <td>
-                                        Title: FULL Calender LIST  <br>
+                                        Title: FULL Calender LIST (VUEJS)  <br>
                                         <b>Youtube:</b> https://www.youtube.com/watch?v=x_WMkIKztRQ <br>
 
                                     </td>
@@ -41,15 +41,29 @@
                                   <tr>
                                     <th scope="row">1</th>
                                     <td>
-                                        Title: FULL Calender LIST  <br>
-                                        <b>Youtube:</b> https://www.youtube.com/watch?v=x_WMkIKztRQ <br>
+                                        Title: FULL Calender   <br>
+                                        <b>Full calendr url:</b> https://fullcalendar.io/docs/getting-started <br>
+
+                                    </td>
+                                    <td>
+                                         Laravel
+                                    </td>
+                                    <td>
+                                        <a href="{{route('full.calender.index')}}" class="btn btn-primary">Visite</a>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">1</th>
+                                    <td>
+                                        Title: FULL Calender   <br>
+                                        <b>Full calendr url:</b><br>
 
                                     </td>
                                     <td>
                                         Vue / Laravel
                                     </td>
                                     <td>
-                                        <a href="{{route('full.calender.index')}}" class="btn btn-primary">Visite</a>
+                                        <a href="{{route('full.calender.laravel')}}" class="btn btn-primary">Visite</a>
                                     </td>
                                   </tr>
 
