@@ -15,6 +15,7 @@ class FullCalenderController extends Controller
 
     public function laravel(){
         $events= BookingResource::collection(Booking::all());
+        // dd($events);
         return view('full_calender.fclander-laravel', compact('events'));
     }
     public function bookingStore(Request $request){
@@ -25,7 +26,7 @@ class FullCalenderController extends Controller
         $booking = Booking::create($request->all());
         return response()->json([
             'status'=> 'success',
-            'data' => $booking
+            'data' => new BookingResource( $booking)
         ]);
         // dd($request->all());
     }
@@ -37,7 +38,7 @@ class FullCalenderController extends Controller
         );
         return response()->json([
             'status'=> 'success',
-            'data' => $booking
+            'data' =>new BookingResource( $booking)
         ]);
         // dd($request->all(), $id);
     }

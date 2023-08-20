@@ -36,6 +36,11 @@
                         <input type="text" class="form-control" id="title" name="title">
                         <small class="error_msg text-danger"></small>
                       </div>
+                    <div class="form-group">
+                        <label for="color">Color</label>
+                        <input type="color" class="form-control" id="color" name="color">
+                        <small class="error_msg text-danger"></small>
+                      </div>
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -117,24 +122,31 @@
                         $("#save_booking").on('click', function(e) {
                             console.log('click hre');
                             let title = $('#title').val();
+                            let color = $('#color').val();
                             let start_date = moment(info.start).format('YYYY-MM-DD HH:mm:ss');
                             let end_date = moment(info.end).format('YYYY-MM-DD HH:mm:ss');
 
                             $.ajax({
                                 type:'POST',
                                 url:"{{ route('full.calender.booking.store') }}",
-                                data:{title:title, start_date:start_date, end_date:end_date},
+                                data:{title:title, color:color,start_date:start_date, end_date:end_date},
                                 success:function(response){
                                   if($.trim(response) != ''){
                                     if(response.status == 'success'){
                                         calendar.addEvent({
                                             id:response.data.id,
+                                            // color:response.data.color,
+                                            color: 'purple', // override!
                                             title: title,
                                             start: info.start,
                                             end: info.end,
-                                            allDay: info.allDay
+                                            // allDay: info.allDay,
+                                            backgroundColor:response.data.color,
+                                            // borderColor:'red',
+                                            // borderStyle:'dotted',
                                         })
                                         calendar.unselect()
+                                        console.log('get all event',  calendar.getEvents());
                                         $('#booking_modal').modal('hide');
                                     }
                                   }

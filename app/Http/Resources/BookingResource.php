@@ -19,6 +19,7 @@ class BookingResource extends JsonResource
             'title' => $this->title,
             'start' => $this->start_date,
             'end' => $this->end_date,
+            'backgroundColor' => $this->color,
         ];
         // return parent::toArray($request);
     }
