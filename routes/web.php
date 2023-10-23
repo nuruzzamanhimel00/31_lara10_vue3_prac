@@ -9,6 +9,7 @@ use App\Http\Controllers\ImageUploadController;
 // use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\MyChat\MyChatController;
 use App\Http\Controllers\MyChat\MyGroupController;
+use App\Http\Controllers\Primevue\PrimevueController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,12 @@ Route::as('realtime.')->group(function(){
     Route::post('/realtime-chat-bitfums/sendMessage', [ChatController::class, 'bitfumSendMessage'])->name('chat.bitfums.sendMessage');
 });
 
+// ######### Prime vue #######
+Route::prefix('prime-vue')->as('prime.vue.')->group(function(){
+    Route::get('/get-users-paginate', [PrimevueController::class, 'getUsers'])->name('getuser.paginate');
+});
+// ######### Prime vue #######
+
 // ###################### Group chat route from youtube ################
 Route::get('/chat-home', [App\Http\Controllers\HomeController::class, 'index_one'])->name('home');
 
@@ -53,6 +60,8 @@ Route::post('/group/join', 'App\Http\Controllers\ChatApp\GroupController@join');
 
 Route::get('/subscribe', 'App\Http\Controllers\ChatApp\ChatController@subscribe');
 // ###################### Group chat route from youtube ################
+
+
 
 // ##### Chat Application practice myself ####
 

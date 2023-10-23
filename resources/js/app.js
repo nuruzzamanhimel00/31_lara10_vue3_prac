@@ -1,6 +1,9 @@
 import "./bootstrap";
 import { createApp } from "vue";
 
+// prime vue import
+import PrimeVue from "primevue/config";
+import "primevue/resources/themes/lara-light-teal/theme.css";
 // for ziggi
 import { ZiggyVue } from "../../vendor/tightenco/ziggy/dist/vue.m";
 
@@ -17,6 +20,8 @@ import ExampleComponent from "./components/ExampleComponent.vue";
 //for v-toster
 import Toaster from "@meforma/vue-toaster";
 app.use(Toaster);
+//prime vue import
+app.use(PrimeVue);
 
 //vue socroll
 // import VueChatScroll from "vue-chat-scroll";
